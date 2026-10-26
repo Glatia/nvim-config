@@ -747,6 +747,7 @@ do
   ---@type table<string, vim.lsp.Config>
   local servers = {
      clangd = {
+      filetypes = {'cpp'},
       init_options = {
         fallbackFlags = { '-std=c++23' },
       }
@@ -837,6 +838,15 @@ do
     vim.lsp.config(name, server)
     vim.lsp.enable(name)
   end
+
+  vim.lsp.config('clangd_c', {
+    cmd = {'clangd'},
+    filetypes = {'c'},
+    init_options = {
+      fallbackFlags = { '-std=c23' }
+    },
+  })
+  vim.lsp.enable('clangd_c')
 end
 
 -- ============================================================
